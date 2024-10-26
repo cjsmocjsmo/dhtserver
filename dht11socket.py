@@ -15,9 +15,9 @@ async def handle_message(websocket):
             command = data.get("command")
 
             if command == "tempc":
-                temp = subprocess.run(["dht11temp"])
+                temp = subprocess.run(["/usr/bin/dht11temp"])
                 print("temp type {}", type(temp))
-                await websocket.send(json.dumps({"temp": str(temp)}))
+                await websocket.send(json.dumps({"temp": temp}))
             elif command == "tempf":
                 temp = subprocess.run(["dht11temp"])
                 tempf = (temp * 9/5) + 32
