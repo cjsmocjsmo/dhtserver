@@ -16,14 +16,14 @@ async def handle_message(websocket):
 
             if command == "tempc":
                 temp = subprocess.run(["dht11temp"])
-                await websocket.send(json.dumps({"temp:": temp}))
+                await websocket.send(json.dumps({"temp:": str(temp)}))
             elif command == "tempf":
                 temp = subprocess.run(["dht11temp"])
                 tempf = (temp * 9/5) + 32
-                await websocket.send(json.dumps({"temp:": tempf}))
+                await websocket.send(json.dumps({"temp:": str(tempf)}))
             elif command == "hum":
                 hum = subprocess.run(["dht11hum"])
-                await websocket.send(json.dumps({"hum:": hum}))
+                await websocket.send(json.dumps({"hum:": str(hum)}))
 
     except Exception as e:
         logging.error(f"Exception in handle_message: {e}")
