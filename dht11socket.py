@@ -30,7 +30,7 @@ async def handle_message(websocket):
     finally:
         logging.info("WebSocket connection closed")
 async def servermain():
-    async with websockets.serve(handle_message, "10.0.4.41", 8765):
+    async with websockets.serve(handle_message, "10.0.4.60", 8765):
         await asyncio.Future()  # Run forever
 
 if __name__ == "__main__":
