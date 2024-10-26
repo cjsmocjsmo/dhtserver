@@ -16,6 +16,7 @@ async def handle_message(websocket):
 
             if command == "tempc":
                 temp = subprocess.run(["dht11temp"])
+                print("temp type {}", type(temp))
                 await websocket.send(json.dumps({"temp": str(temp)}))
             elif command == "tempf":
                 temp = subprocess.run(["dht11temp"])
